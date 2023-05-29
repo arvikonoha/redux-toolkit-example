@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import Welcome from './pages/Welcome';
+import { useEffect } from 'react'
+import {useDispatch} from 'react-redux/es/exports'
+import { authorizeThunk } from './reducers/auth'
+
 import './App.css';
 
 function App() {
+  
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+   dispatch(authorizeThunk())
+ }, [])
+ 
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Welcome />
     </div>
   );
 }
